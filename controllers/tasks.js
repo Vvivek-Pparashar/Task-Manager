@@ -1,14 +1,20 @@
+const Task = require("../models/Task");
+
 const getAllTasks = (req, res) => {
   res.send("hlo guys vivek is gr8");
 };
 
-const createTask = (req, res) => {
-        // console.log(req.)
-  console.log(req.body);
-  res.json(req.body);
+const createTask = async (req, res) => {
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json({ task });
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("invalid name")
+  }
 };
 const deleteTask = (req, res) => {
-        // console.log(req.body)
+  // console.log(req.body)
   res.send("Deletedask");
 };
 const updateTask = (req, res) => {
