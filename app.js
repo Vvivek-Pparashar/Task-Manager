@@ -2,25 +2,26 @@ const express = require("express");
 const tasks = require("./routes/tours");
 const path = require("path");
 const connectDB = require("./db/connect");
-require('dotenv').config();
+const notFound = require("./middlewares/not-found");
+const errorHandler = require("./middlewares/error-handler");
+require("dotenv").config();
 
 const app = express();
 
+// =====================   MiddleWares   ================================
 
-app.use(express.static('./public'))
+app.use(express.static("./public"));
 app.use(express.json());
 
+// =====================   Routes   ================================
 
-//Routes
 app.use("/api/v1/tasks", tasks);
+app.use(notFound);
+app.use(errorHandler);
 
-// app.get("/", (req, res) => {
-//   res.sendFile('index.html');
-// });
+// =====================   Listening to port   ================================
 
-
-
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {

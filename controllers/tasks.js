@@ -1,79 +1,61 @@
 const Task = require("../models/Task");
+const asyncWraper = require("../middlewares/asyncWraper");
 
 // =====================   GET ALL THE TASKS   ================================
 
-const getAllTasks = async (req, res) => {
-  try {
-    const task = await Task.find({});
-    res.status(200).json({ tasks: task })
-  } catch (error) {
-    res.status(500).json({ msg: error });
-  }
-};
+const getAllTasks = asyncWraper(async (req, res) => {
+  const task = await Task.find({});
+  res.status(200).json({ tasks: task });
+});
 
 // =====================   GET THE TASK   ================================
-const getTask = async (req, res) => {
-  try {
-    const { id: taskId } = req.params;
-    const task = await Task.findOne({ _id: taskId });
+const getTask = asyncWraper(async (req, res) => {
+  const { id: taskId } = req.params;
+  const task = await Task.findOne({ _id: taskId });
 
-    if (!task) {
-      return res.status(404).json({ msg: "No task for this id" });
-    }
-    res.status(200).json({ task });
-  } catch (error) {
-    res.status(500).send("invalid name");
+  if (!task) {
+    return res.status(404).json({ msg: "No task for this id" });
   }
-};
+  res.status(200).json({ task });
+});
 
 // =====================   CREATE A NEW TASK  ================================
 
-const createTask = async (req, res) => {
-  try {
-    const task = await Task.create(req.body);
-    res.status(201).json({ task });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("invalid name");
-  }
-};
+const createTask = asyncWraper(async (req, res) => {
+  const task = await Task.create(req.body);
+  res.status(201).json({ task });
+});
 
 // =====================   DELETE THE TASK   ================================
 
-const deleteTask = async (req, res) => {
-  try {
-    const { id: taskId } = req.params;
-    const task = await Task.findOneAndDelete({ _id: taskId });
+const deleteTask = asyncWraper(async (req, res) => {
+  const { id: taskId } = req.params;
+  const task = await Task.findOneAndDelete({ _id: taskId });
 
-    if (!task) {
-      return res.status(404).json({ msg: "No task for this id" });
-    }
-    res.status(200).json({ task });
-  } catch (error) {
-    res.status(500).send("invalid name");
+  if (!task) {
+    return res.status(404).json({ msg: "No task for this id" });
   }
-};
+  res.status(200).json({ task });
+});
 
 // =====================   UPDATE ALL THE TASK   ================================
-const updateTask = async (req, res) => {
-  try {
-    const { id: taskId } = req.params;
-    const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
-      new: true,
-      runValidators: true,
-    });
 
-    if (!task) {
-      return res.status(404).json({ msg: "No task for this id" });
-    }
+const updateTask = asyncWraper(async (req, res) => {
+  const { id: taskId } = req.params;
+  const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
-    res.status(200).send({ task });
-  } catch (error) {
-    res.status(500).send("invalid name");
+  if (!task) {
+    return res.status(404).json({ msg: "No task for this id" });
   }
-};
+
+  res.status(200).send({ task });
+});
 
 // =====================   EXPORTS EVERYTHING   ================================
+
 module.exports = {
   getAllTasks,
   getTask,

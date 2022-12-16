@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Quintessential&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .gif {
+        background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
+        width: 683px;
+        height: 409.8px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .error404-numb2 {
+        font-family: "Quintessential", cursive;
+        font-size: 100px;
+        line-height: 120px;
+      }
+
+      .font-poppins {
+        align-items: center;
+        text-align: center;
+        font-size: 21px;
+        color: #6b6d6f;
+        font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+      }
+
+      .button button {
+        color: #fff !important;
+        padding: 13px 30px;
+        background: #39ac31;
+        margin: 50px 0 0 0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .tips {
+        width: 80vw;
+        margin: auto;
+        margin: 3vw auto 5vw auto;
+      }
+
+      .tips .font-poppins {
+        text-align: inherit;
+      }
+
+      .tips p {
+        margin-bottom: 10px;
+      }
+
+      .tips .font-poppins ul {
+        margin-left: 45px;
+      }
+
+      li {
+        font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: normal;
+        color: #6b6d6f;
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          height: 80vh;
+          min-height: 500px;
+        }
+
+        .gif {
+          width: 120vw;
+          height: 80vw;
+          overflow-x: hidden;
+        }
+
+        .error404-numb2 {
+          font-size: 80px;
+          line-height: 100px;
+        }
+
+        .font-poppins {
+          font-size: 17px;
+        }
+
+        .tips {
+          width: 90vw;
+        }
+
+        .tips p {
+          margin-bottom: 10px;
+        }
+
+        .tips .font-poppins ul {
+          margin-left: 40px;
+        }
+
+        li {
+          font-size: 16px;
+          line-height: 25px;
+        }
+      }
+
+      @media screen and (max-width:500px) {
+        .error404-numb2 {
+          font-size: 70px;
+          line-height: 90px;
+        }
+
+        .font-poppins {
+          width: 90%;
+          font-size: 15px;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="gif">
+        <h1 class="error404-numb2">4<span style="color: red">O</span>4</h1>
+        <p class="font-poppins">
+          <b>Oh no, you’ve found our junior developer’s homepage!</b>
+        </p>
+      </div>
+
+      <p class="font-poppins">
+        Despite sleeping on the couch most of the day, our junior web developer
+        still finds time to do some coding…
+      </p>
+
+      <div class="button">
+        <a href='/'><button>Go To Main Page</button></a>
+      </div>
+    </div>
+
+    <div class="tips">
+      <div class="font-poppins">
+        <p><span style="color: red">Tips:</span></p>
+        <ul>
+          <li>
+            This is a 404 error, which means you've clicked on a link which is
+            not exist or entered an invalid URL, go back to your previous page
+            or try using our site search to find something specific.
+          </li>
+          <li>
+            We’re not quite sure what went wrong. We track these errors
+            automatically, if you need a hand - try looking on our
+            <a class="a-blue" href="contact">Help Center</a>
+          </li>
+          <li>
+            <span style="color: green">PS:</span> Sorry, we can't find that
+            page! Don't worry though, everything is STILL AWESOME!
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
