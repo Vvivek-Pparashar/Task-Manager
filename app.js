@@ -15,6 +15,8 @@ app.use(express.json());
 
 // =====================   Routes   ================================
 
+// app.use("/vi", (req, res)=>res.send("vivek is gr8"))
+app.get("/", (req, res)=>res.sendFile(path.join(__dirname, '/index.html')));
 app.use("/api/v1/tasks", tasks);
 app.use(notFound);
 app.use(errorHandler);
